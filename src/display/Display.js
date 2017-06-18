@@ -5,7 +5,7 @@ class Particle extends THREE.Object3D{
   constructor() {
     super();
     this.add(new THREE.Mesh(
-      new THREE.SphereGeometry(1.0, 1.0, 10.0, 10.0),
+      new THREE.SphereGeometry(1.0, 10.0, 10.0),
       new THREE.ShaderMaterial({
         transparent : true,
         uniforms : {
@@ -18,7 +18,7 @@ class Particle extends THREE.Object3D{
         fragmentShader : `
         uniform vec4 unif_color;
         void main(void) {
-          gl_FragColor = unif_color;
+          gl_FragColor = vec4(unif_color.rgb, 1.0);
         }
         `,
         vertexShader : `
